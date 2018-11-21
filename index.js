@@ -22,7 +22,19 @@ function readTextFile(file) {
                         colname += allText[i];
                     }
                 }
-                
+                                var value = "";
+                var curr = 0;
+                for (i; i < 100; i++) {
+                    if (allText[i] === ',' || allText[i] === '\n') {
+                        console.log(value + "INTO " + matches_colname[curr]);
+                        matches_json[matches_colname[curr]].push(value);
+                        value = "";
+                        curr = (curr + 1) % matches_colname.length;
+                    }
+                    else {
+                        value += allText[i];
+                    }
+                }
 
               
             }
